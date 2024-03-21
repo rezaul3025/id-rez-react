@@ -16,8 +16,8 @@ const Home = () => {
             })
             .then((data) => {
                 setTipOfTheDay(data.slip.advice);
-            }).catch(function(error) {
-                console.log("Error fetching tip: "+error);
+            }).catch(function (error) {
+                console.log("Error fetching tip: " + error);
             });
 
         return true;
