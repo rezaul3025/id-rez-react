@@ -9,7 +9,7 @@ const PhotoGrid = (props) => {
             </div>
             <div id="imageGrid" className="grid grid-cols-2 md:grid-cols-8 gap-4 w-full">
                 {props.results.map((result) => (
-                    <Photo data={result} key={result.id}/>
+                    <Photo data={result} key={result.id} />
                 ))}
             </div>
         </Fragment>

@@ -6,7 +6,7 @@ import StarIcon from "./StarIcon";
 
 const Photo = (props) => {
     let data = props.data;
-    const [photoData, setPhotoData] = useState({});
+    const [photoData, setPhotoData] = useState(null);
 
     const saveItem = (item) => {
         let savedItems = getItems();
@@ -38,7 +38,7 @@ const Photo = (props) => {
             saveItem(item);
         }
 
-        setPhotoData({ "data": data });
+        setPhotoData({ "item": item });
     }
 
 
@@ -64,9 +64,9 @@ const Photo = (props) => {
 
     return (
         <figure className="max-w-lg" key={data.id}>
-            <img  className="h-auto max-w-full rounded-lg" src={data.image} alt="image description" title={data.name} />
-            <figcaption  className="mt-2 text-sm  text-gray-500 dark:text-gray-400">{data.name}
-                <a  title="Save" role="button" onClick={() => itemHandlar(data, checkItemExist(data.id))}>
+            <img className="h-auto max-w-full rounded-lg" src={data.image} alt="image description" title={data.name} />
+            <figcaption className="mt-2 text-sm  text-gray-500 dark:text-gray-400">{data.name}
+                <a title="Save" role="button" onClick={() => itemHandlar(data, checkItemExist(data.id))}>
                     {checkItemExist(data.id) && <StarIcon fill_color="text-blue-900" />}
                     {!checkItemExist(data.id) && <StarIcon fill_color="text-slate-300" />}
                 </a>

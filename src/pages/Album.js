@@ -30,15 +30,15 @@ const Album = () => {
         } catch (err) {
             setError(err.message);
             setData(null);
-           
+
         } finally {
             setLoading(false);
         }
     };
 
-    const doSearchOnCurrentResults = (event) =>{
-        if(data != null && data.results != null){
-            let searchItems = data.results.filter(function (entry) { return entry.name.includes(event.target.value);});
+    const doSearchOnCurrentResults = (event) => {
+        if (data != null && data.results != null) {
+            let searchItems = data.results.filter(function (entry) { return entry.name.includes(event.target.value); });
             setResults(searchItems);
         }
     }
@@ -52,7 +52,7 @@ const Album = () => {
             <div id="searchAndPagination" className="inline-block mx-auto w-full py-1">
 
                 <PhotoSearch handleSearch={doSearchOnCurrentResults} />
-                
+
                 <Pagination data={data} handleFetchLitOfAlbams={fetchLitOfAlbams} />
             </div>
             <div id="photos" className="pt-4">
@@ -65,7 +65,7 @@ const Album = () => {
                 }
 
                 {results != null &&
-                    <PhotoGrid results={results}  />
+                    <PhotoGrid results={results} />
                 }
             </div>
             <div id="paginationBottom" className="inline-block mx-auto w-full py-2">

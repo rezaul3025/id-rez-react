@@ -2,7 +2,7 @@ import React from "react";
 import PhotoGrid from "../components/PhotoGrid";
 import { useState, useEffect } from "react";
 
-const MyFavourites = () =>{
+const MyFavourites = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -14,7 +14,7 @@ const MyFavourites = () =>{
             <div id="photos" className="pt-4">
 
                 {data != null &&
-                    <PhotoGrid results={data}  />
+                    <PhotoGrid results={data} />
                 }
             </div>
         </div>
