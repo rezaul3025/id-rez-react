@@ -1,19 +1,38 @@
 import React, { Fragment } from "react";
 import Photo from "./Photo";
+import { useState } from "react";
+
+import GridHeader from "./GridHeader";
 
 const PhotoGrid = (props) => {
-    return (
-        <Fragment>
-            <div id="imageGridHeader" className="pb-4">
-                <span className="bg-slate-200 text-gray-600 text-sm font-medium me-2 px-2.5 py-2 rounded-full dark:bg-green-900 dark:text-green-300">Total image(s) {props.results.length}</span>
-            </div>
-            <div id="imageGrid" className="grid grid-cols-2 md:grid-cols-8 gap-4 w-full">
-                {props.results.map((result) => (
-                    <Photo data={result} key={result.id} />
-                ))}
-            </div>
-        </Fragment>
-    );
+  const [gridColumns, setGridColumns] = useState(8);
+
+  const changeGridColumns = (value) => {
+    setGridColumns(value);
+  };
+
+  return (
+    <Fragment>
+      <GridHeader
+        totalImage={props.results.length}
+        changeGridColumns={changeGridColumns}
+      />
+      <div
+        id="imageGrid"
+        className={
+          "grid grid-cols-" +
+          gridColumns +
+          " md:grid-cols-" +
+          gridColumns +
+          " gap-4 w-full"
+        }
+      >
+        {props.results.map((result) => (
+          <Photo data={result} key={result.id} />
+        ))}
+      </div>
+    </Fragment>
+  );
 };
 
 export default PhotoGrid;
