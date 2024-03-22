@@ -5,7 +5,7 @@ import StarIcon from "./StarIcon";
 
 const Photo = (props) => {
     let data = props.data;
-    const [photoData, setPhotoData] = useState(null);
+    const [refresh, setRefresh] = useState(0)
 
     const saveItem = (item) => {
         let savedItems = getItems();
@@ -32,7 +32,7 @@ const Photo = (props) => {
             saveItem(item);
         }
 
-        setPhotoData({ item: item });
+        setRefresh(refresh+1);
     };
 
     const getItems = () => {
