@@ -1,29 +1,39 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import Photo from "./Photo";
-import { useState } from "react";
 
 import GridHeader from "./GridHeader";
 
 const PhotoGrid = (props) => {
-    const [gridColumns, setGridColumns] = useState("8");
+  const [gridColumnsClass, setGridColumnsClass] = useState(
+    "grid-cols-8 md:grid-cols-8",
+  );
 
-    const changeGridColumns = (value) => {
-        setGridColumns(value);
-    };
+  const gridColumsSizeClasses = {
+    5: "grid-cols-5 md:grid-cols-5",
+    8: "grid-cols-8 md:grid-cols-8",
+    10: "grid-cols-10 md:grid-cols-10",
+  };
 
-    return (
-        <Fragment>
-            <GridHeader
-                totalImage={props.results.length}
-                changeGridColumnHandler={changeGridColumns}
-            />
-            <div id="imageGrid" className={"grid grid-cols-"+gridColumns+" md:grid-cols-"+gridColumns+" gap-4 w-full"} >
-                {props.results.map((result) => (
-                    <Photo data={result} key={result.id} />
-                ))}
-            </div>
-        </Fragment>
-    );
+  const changeGridColumns = (value) => {
+    setGridColumnsClass(gridColumsSizeClasses[value]);
+  };
+
+  return (
+    <Fragment>
+      <GridHeader
+        totalImage={props.results.length}
+        changeGridColumnHandler={changeGridColumns}
+      />
+      <div
+        id="imageGrid"
+        className={"grid " + gridColumnsClass + " gap-4 w-full"}
+      >
+        {props.results.map((result) => (
+          <Photo data={result} key={result.id} />
+        ))}
+      </div>
+    </Fragment>
+  );
 };
 
 export default PhotoGrid;

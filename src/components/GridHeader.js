@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const GridHeader = (props) => {
   return (
@@ -11,21 +11,21 @@ const GridHeader = (props) => {
       </span>
       <button
         type="button"
-        onClick={() => props.changeGridColumnHandler("5")}
+        onClick={() => props.changeGridColumnHandler(5)}
         className="bg-slate-200 text-gray-600 text-sm font-medium  p-0.5 text-center inline-flex items-center me-2 dark:bg-blue-600 hover:bg-blue-300"
       >
         5
       </button>
       <button
         type="button"
-        onClick={() => props.changeGridColumnHandler("8")}
+        onClick={() => props.changeGridColumnHandler(8)}
         className="bg-slate-200 text-gray-600 text-sm font-medium p-1 text-center inline-flex items-center me-2 dark:bg-blue-600 hover:bg-blue-200"
       >
         8
       </button>
       <button
         type="button"
-        onClick={() => props.changeGridColumnHandler("10")}
+        onClick={() => props.changeGridColumnHandler(10)}
         className="bg-slate-200 text-gray-600 text-sm font-medium  p-1.5 text-center inline-flex items-center me-2 dark:bg-blue-600 hover:bg-blue-200"
       >
         10
