@@ -11,7 +11,7 @@ const Album = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const fetchLitOfAlbams = async (url) => {
+    const fetchLitOfPhotos = async (url) => {
         if (url == null) {
             return;
         }
@@ -21,19 +21,18 @@ const Album = () => {
                 url
             );
             if (!response.ok) {
-                throw new Error(`HTTP error: Status ${response.status}`);
+                throw new Error(`HTTP error while fetching Lit Of Photos: Status ${response.status}`);
             }
             let postsData = await response.json();
             setData(postsData);
             setResults(postsData.results);
             setError(null);
-            setLoading(false);
         } catch (err) {
             setError(err.message);
             setData(null);
 
         } finally {
-            //setLoading(false);
+            setLoading(false);
         }
     };
 
@@ -45,7 +44,7 @@ const Album = () => {
     }
 
     useEffect(() => {
-        fetchLitOfAlbams(`https://rickandmortyapi.com/api/character`);
+        fetchLitOfPhotos(`https://rickandmortyapi.com/api/character`);
     }, []);
 
     return (
@@ -54,7 +53,7 @@ const Album = () => {
 
                 <PhotoSearch handleSearch={doSearchOnCurrentResults} />
 
-                <Pagination data={data} handleFetchLitOfAlbams={fetchLitOfAlbams} />
+                <Pagination data={data} handleFetchLitOfPhotos={fetchLitOfPhotos} />
             </div>
             <div id="photos" className="pt-4">
                 {loading &&
@@ -72,7 +71,7 @@ const Album = () => {
                 
             </div>
             <div id="paginationBottom" className="inline-block mx-auto w-full py-2">
-                <Pagination data={data} handleFetchLitOfAlbams={fetchLitOfAlbams} />
+                <Pagination data={data} handleFetchLitOfPhotos={fetchLitOfPhotos} />
             </div>
 
         </div>
