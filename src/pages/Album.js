@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ Suspense } from "react";
 import { useState, useEffect } from "react";
 import Pagination from "../components/Pagination";
 import PhotoSearch from "../components/PhotoSearch";
@@ -27,12 +27,13 @@ const Album = () => {
             setData(postsData);
             setResults(postsData.results);
             setError(null);
+            setLoading(false);
         } catch (err) {
             setError(err.message);
             setData(null);
 
         } finally {
-            setLoading(false);
+            //setLoading(false);
         }
     };
 
@@ -64,9 +65,11 @@ const Album = () => {
                     <p>{error}</p>
                 }
 
-                {results != null &&
+                { results != null && <Suspense fallback={<p>Loading photos ...</p>}>
                     <PhotoGrid results={results} />
-                }
+                </Suspense>}
+                   
+                
             </div>
             <div id="paginationBottom" className="inline-block mx-auto w-full py-2">
                 <Pagination data={data} handleFetchLitOfAlbams={fetchLitOfAlbams} />
