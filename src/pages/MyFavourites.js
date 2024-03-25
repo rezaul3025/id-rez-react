@@ -23,7 +23,9 @@ const MyFavourites = () => {
 
     return (
         <div className="relative mx-auto text-gray-600">
+            <div className="grid grid-cols-1 md:grid-cols-2">
             <PhotoSearch handleSearch={doSearchOnCurrentResults} />
+            </div>
             <div id="photos" className="pt-4">
                 {data != null &&
                     <PhotoGrid results={results} />

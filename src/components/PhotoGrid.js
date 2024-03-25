@@ -5,13 +5,13 @@ import GridHeader from "./GridHeader";
 
 const PhotoGrid = (props) => {
   const [gridColumnsClass, setGridColumnsClass] = useState(
-    "grid-cols-8 md:grid-cols-8",
+    "grid-cols-2 md:grid-cols-8",
   );
 
   const gridColumsSizeClasses = {
-    5: "grid-cols-5 md:grid-cols-5",
-    8: "grid-cols-8 md:grid-cols-8",
-    10: "grid-cols-10 md:grid-cols-10",
+    5: "grid-cols-2 md:grid-cols-5",
+    8: "grid-cols-2 md:grid-cols-8",
+    10: "grid-cols-2 md:grid-cols-10",
   };
 
   const changeGridColumns = (value) => {

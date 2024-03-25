@@ -49,11 +49,13 @@ const Album = () => {
 
     return (
         <div className="relative mx-auto text-gray-600">
-            <div id="searchAndPagination" className="inline-block mx-auto w-full py-1">
-
-                <PhotoSearch handleSearch={doSearchOnCurrentResults} />
-
-                <Pagination data={data} handleFetchLitOfPhotos={fetchLitOfPhotos} />
+            <div id="searchAndPagination" className="inline-block mx-auto w-full py-1 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <PhotoSearch handleSearch={doSearchOnCurrentResults} />
+                </div>
+                <div>
+                    <Pagination data={data} handleFetchLitOfPhotos={fetchLitOfPhotos} />
+                </div>
             </div>
             <div id="photos" className="pt-4">
                 {loading &&
