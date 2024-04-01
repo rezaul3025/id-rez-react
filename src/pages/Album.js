@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { useState, useEffect } from "react";
 import Pagination from "../components/Pagination";
 import PhotoSearch from "../components/PhotoSearch";
@@ -20,11 +20,12 @@ const Album = () => {
       if (response.status === 404) {
         setData(null);
         setError("Not photo(s) found");
+        setResults(null);
         setLoading(false);
         return;
       }
       if (!response.ok) {
-        throw new Error(
+       console.log(
           `HTTP error while fetching Lit Of Photos: Status ${response.status}`,
         );
       }
@@ -49,6 +50,9 @@ const Album = () => {
       });
       newResults = [...searchItems];
       setResults(newResults);
+    }else{
+      newResults = [];
+      setResults(null);
     }
 
     // Return only ready data when unspecific search
@@ -83,10 +87,8 @@ const Album = () => {
 
         {error && <p>{error}</p>}
 
-        {results !== null && (
-          <Suspense fallback={<p>Loading photos ...</p>}>
-            <PhotoGrid results={results} />
-          </Suspense>
+        {results != null && (
+          <PhotoGrid results={results} />
         )}
       </div>
       {results != null && (

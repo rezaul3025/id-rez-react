@@ -20,12 +20,11 @@ const PhotoGrid = (props) => {
 
   return (
     <Fragment>
-      {(props.results != null || props.results.length !== 0) && (
         <GridHeader
           totalImage={props.results.length}
           changeGridColumnHandler={changeGridColumns}
         />
-      )}
+      
       <div
         id="imageGrid"
         className={"grid " + gridColumnsClass + " gap-4 w-full"}
